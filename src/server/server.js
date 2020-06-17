@@ -78,7 +78,7 @@ const pixabayID = process.env.PIXABAYKEY
 
 // GET REQUEST to get image from pixabay API
 const fetchPixabay = async (URL, input) => {
-    const fetchURL = `${URL}key=${pixabayID}&q=${encodeURIComponent(input)}&image_type=photo`
+    const fetchURL = `${URL}key=${pixabayID}&q=${encodeURIComponent(input)}`
     const response = await fetch(fetchURL)
 
     try {
