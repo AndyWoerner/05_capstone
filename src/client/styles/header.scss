@@ -1,6 +1,6 @@
 header {
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
     padding: 10px 40px;
     border-bottom: 1px solid #545454;
     background: #222;
@@ -9,4 +9,33 @@ header {
 
 .heading {
     font-size: 2em;
+}
+
+.navbar__menu ul {
+    padding-left: 0;
+    margin: 0;
+    text-align: right;
+}
+
+.navbar__menu li {
+    display: inline-block;
+}
+
+.navbar__menu .menu__link {
+    display: block;
+    padding: 1em;
+    font-weight: bold;
+    text-decoration: none;
+    color: #eee;
+}
+
+// .active__nav {
+//     background-color: #eee;
+//     color: white;
+// }
+
+.navbar__menu .menu__link:hover {
+    background: #888;
+    color: #222;
+    transition: ease 0.3s all;
 }

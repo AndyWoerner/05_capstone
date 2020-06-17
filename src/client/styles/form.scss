@@ -1,6 +1,6 @@
 form {
     border-radius: 30px;
-    padding: 60px;
+    padding: 30px;
 }
 
 input {
@@ -12,4 +12,8 @@ input {
 
 #source {
     width: 200px;
+}
+
+.results {
+    display: none;
 }
