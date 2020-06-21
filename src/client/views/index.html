@@ -26,18 +26,17 @@
           Plan your next trip and get useful weather informations! Just enter a location and a date.
         </div>
       </div>
-      <form onsubmit="return Client.handleSubmit(e)">
+      <form>
         <label for="location">Enter a location:</label>
         <input id="location" name="location" type="text" value="" placeholder="Trip location">
         <label for="date">Date:</label>
         <input type="date" id="date" name="date" value="" placeholder="dd.mm.yyyy">
-        <input type="submit" value="Submit" onclick="return Client.handleSubmit(e)" onsubmit="return Client.handleSubmit(e)">
+        <input id="submit" type="submit" value="Submit">
       </form>
     </section>
 
     <section class="results">
-
-
+      <div id="today"></div>
     </section>
   </main>
 
