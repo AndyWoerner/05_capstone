@@ -30,9 +30,4 @@ app.get('/', function (req, res) {
     res.sendFile('dist/index.html')
 })
 
-// GET routes
 
-app.get("/all", sendData)
-function sendData(request, response) {
-    response.send(projectData)
-}

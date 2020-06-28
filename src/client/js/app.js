@@ -1,7 +1,6 @@
 // Database
 const projectData = {
-    checkGeo: false,
-    imageURL: "https://pixabay.com/get/53e1d14a4350b10ff3d89960c62d3e7d163cd7ec5757_640.jpg"
+    imageURL: "https://pixabay.com/get/53e1d14a4350b10ff3d89960c62d3e7d163cd7ec5757_640.jpg" //default image URL if no image can be fetched
 };
 
 const checkAndHandle = async (event) => {
@@ -43,9 +42,11 @@ const fetchGeoname = async (city) => {
     // GeoNames API Credentials
     const baseURLGeonames = "http://api.geonames.org/postalCodeSearchJSON?placename="
     const geonamesID = "andywoerner"
+
+    // build a URL out of credentials and user input
     const fetchURL = `${baseURLGeonames}${encodeURIComponent(city)}&maxRows=1&username=${geonamesID}`
     const response = await fetch(fetchURL)
-    let geoData = "";
+    let geoData = ""
     try {
         geoData = await response.json()
         return geoData.postalCodes[0]
@@ -58,20 +59,24 @@ const fetchGeoname = async (city) => {
 // Fetch information from weatherbit API
 async function fetchWeatherbit(geoData) {
     // Weatherbit API credentials
-    const baseURLWeatherbitCurrent = "https://api.weatherbit.io/v2.0/current?"
-    const baseURLWeatherbitForecast = "https://api.weatherbit.io/v2.0/forecast/daily?"
-    const baseURLWeatherbitHistorical = "https://api.weatherbit.io/v2.0/history/daily?"
+    const baseURLWeatherbitCurrent = "https://api.weatherbit.io/v2.0/current?" //URL for current weather informations
+    const baseURLWeatherbitForecast = "https://api.weatherbit.io/v2.0/forecast/daily?" //URL for forecast weather informations
+    const baseURLWeatherbitHistorical = "https://api.weatherbit.io/v2.0/history/daily?" //URL for historical weather informations
     const weatherbitID = "6186def2ac69443597dd95e7d6e0e5b2"
 
     // coordinates from geonames
-    let lat 
-    let lng 
+    let lat
+    let lng
+
+    // if location can be found on geonames set projectData.checkGeo to true. A result card will be rendered
     try {
         lat = geoData.lat
         lng = geoData.lng
         projectData.checkGeo = true
-        
+
     } catch (Error) {
+        // if no location can be found on geonames set projectData.checkGeo to false. 
+        // dummy lat and lng values are set -> code runs through but the result card shows an alert.
         console.log("An error occured while fetching coordinates");
         lat = 0
         lng = 0
@@ -92,7 +97,6 @@ async function fetchWeatherbit(geoData) {
         //if trip is today show current weather
         url = `${baseURLWeatherbitCurrent}&lat=${lat}&lon=${lng}&key=${weatherbitID}`
         console.log("Looking for current weather information")
-
 
         const response = await fetch(url)
         try {
@@ -174,7 +178,6 @@ const fetchPixabay = async () => {
 
 
 // create a card with the results in projectData Object
-
 function createCard(projectData) {
     if (projectData.checkGeo) {
         // get length of trip
@@ -242,6 +245,7 @@ function createCard(projectData) {
         }
     }
     else {
+        //if there are no results for user input, show this card with default image.
         document.getElementById("results").innerHTML = `<div class="card">
 <span id="close">X</span>
 <img id="result_imageURL"
