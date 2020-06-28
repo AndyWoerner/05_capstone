@@ -1,7 +1,5 @@
 // Database
 const projectData = {
-    checkGeo: false,
-    image: "https://pixabay.com/get/57e6d4424c53a814f1dc8460da293277163fd7e25a5870_640.jpg"
 };
 
 
@@ -84,8 +82,7 @@ async function fetchWeatherbit(geoData) {
     if (forecastDate == 0) {
         //if trip is today show current weather
         url = `${baseURLWeatherbitCurrent}&lat=${lat}&lon=${lng}&key=${weatherbitID}`
-        console.log(url);
-        console.log("current weather");
+        console.log("Looking for current weather information")
 
 
         const response = await fetch(url)
@@ -101,8 +98,7 @@ async function fetchWeatherbit(geoData) {
     else if (forecastDate > 0 && (forecastDate < 16)) {
         //if trip ist between 1 and 16 days in the future show weather forecast
         url = `${baseURLWeatherbitForecast}&lat=${lat}&lon=${lng}&key=${weatherbitID}`
-        console.log(url);
-        console.log("forecast weather");
+        console.log("Looking for forecast weather information")
         const response = await fetch(url)
         try {
             const weatherData = await response.json()
@@ -128,8 +124,7 @@ async function fetchWeatherbit(geoData) {
             .split("T")[0];
 
         url = `${baseURLWeatherbitHistorical}&lat=${lat}&lon=${lng}&start_date=${startDate}&end_date=${endDate}&key=${weatherbitID}`
-        console.log(url);
-        console.log("historical weather");
+        console.log("Looking for historical weather information")
         const response = await fetch(url)
         try {
             const weatherData = await response.json()
@@ -161,7 +156,8 @@ const fetchPixabay = async () => {
         return data
     } catch (error) {
         console.log("An error occured while fetching image from pixabay: ", error)
-        projectData.imageURL = "https://pixabay.com/get/57e6d4424c53a814f1dc8460da293277163fd7e25a5870_640.jpg"
+        console.log(("Image for location could not be found. Using standard image instead"))
+        projectData.imageURL = "https://pixabay.com/get/53e1d14a4350b10ff3d89960c62d3e7d163cd7ec5757_640.jpg"
     }
 }
 
@@ -190,7 +186,6 @@ function createCard(projectData) {
         const currentTemp = projectData.currentTemp
         const maxTemp = projectData.maxTemp
         const minTemp = projectData.minTemp
-        console.log(countdown);
         
         //create card
         if (countdown == 0) {
