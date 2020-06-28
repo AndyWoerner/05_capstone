@@ -13,6 +13,7 @@ If the trip starts later than in 16 days, the app shows minimum and maximum temp
 - Jest / supertest
 - Express
 - Webpack
+- Service Worker
 - HTML, CSS/SASS, Javascript
 
 
