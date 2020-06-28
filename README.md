@@ -30,3 +30,6 @@ You should have node installed in the system to run the project.
 ## Testing with Jest
 1) Run `npm run install` if you havent before.
 2) Run `npm run test`
+
+server.test.js tests the app endpoint "/".
+app.test.js tests if the functions are defined.
