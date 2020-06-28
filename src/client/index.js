@@ -1,7 +1,5 @@
 // import scripts
-import { fetchGeoname } from "./js/getGeoname"
-import { fetchWeatherbit } from "./js/getWeather"
-import { fetchPixabay } from "./js/getPixabay"
+import { checkAndHandle, fetchGeoname, fetchWeatherbit, createCard } from "./js/app"
 
 // import styles
 import "./styles/resets.scss"
@@ -13,11 +11,13 @@ import "./styles/form.scss"
 // import images
 import background from "./media/background.jpg"
 
-document.getElementById("submit").addEventListener("click", checkAndHandle)
-
 // exports
 export {
+    checkAndHandle,
     fetchGeoname,
     fetchWeatherbit,
-    fetchPixabay
+    createCard
 }
+
+// eventListener 
+document.getElementById("submit").addEventListener("click", checkAndHandle)

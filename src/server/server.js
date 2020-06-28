@@ -2,15 +2,11 @@
 const dotenv = require('dotenv')
 dotenv.config()
 
-// Database
-projectData = {
-    geoNames: [],
-    weatherBit: [],
-    pixabay: []
-};
 
 // Require Express to run server and routes
+const path = require("path")
 const express = require("express")
+const axios = require("axios")
 // Start up an instance of app
 const app = express()
 /* Middleware*/
@@ -24,6 +20,8 @@ const cors = require("cors")
 app.use(cors())
 // Initialize the main project folder
 app.use(express.static('dist'))
+
+console.log(__dirname)
 
 // Setup Server
 const port = 3000
@@ -43,17 +41,3 @@ app.get("/all", sendData)
 function sendData(request, response) {
     response.send(projectData)
 }
-
-// POST routes
-
-app.post("/addTrip", addTrip)
-function addTrip(req, res) {
-    projectData.destination = req.body.destination;
-    projectData.date = req.body.date;
-    projectData.imageURL = req.body.imageURL;
-    projectData.maxTemp = req.body.maxTemp;
-    projectData.minTemp = req.body.minTemp;
-    res.end();
-    console.log(projectData);   
-}
-
