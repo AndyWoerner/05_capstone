@@ -17,7 +17,7 @@ If the trip starts later than in 16 days, the app shows minimum and maximum temp
 
 
 ## Prerequisites
-You should have node installed in the system to run the project.
+You should have node installed on your system to run the project.
 
 ## Deployment
 1) Clone or downlaod my repo.
@@ -30,3 +30,6 @@ You should have node installed in the system to run the project.
 ## Testing with Jest
 1) Run `npm run install` if you havent before.
 2) Run `npm run test`
+
+server.test.js tests the app endpoint "/".
+app.test.js tests if the functions are defined.
