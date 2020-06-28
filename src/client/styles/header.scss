@@ -1,7 +1,7 @@
 header {
     display: flex;
     justify-content: space-evenly;
-    padding: 10px 40px;
+    padding: 0px 40px;
     border-bottom: 1px solid #545454;
     background: #222;
     color: #fff;
@@ -29,13 +29,9 @@ header {
     color: #eee;
 }
 
-// .active__nav {
-//     background-color: #eee;
-//     color: white;
-// }
 
 .navbar__menu .menu__link:hover {
     background: #888;
     color: #222;
-    transition: ease 0.3s all;
+    transition: ease 0.2s all;
 }
