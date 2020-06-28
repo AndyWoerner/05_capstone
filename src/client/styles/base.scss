@@ -16,9 +16,6 @@ body {
 
 main {
     flex: 2;
-    .hero {
-        font-size: 30px;
-    }
 }
 
 h1 {
@@ -26,7 +23,7 @@ h1 {
 }
 
 section {
-    max-width: 640px;
+    width: 640px;
     margin: 20px auto;
     border-radius: 10px;
     background: rgb(240, 240, 240);
@@ -39,6 +36,11 @@ section {
         border-top-right-radius: 10px;
     }
 
+    h1 {
+        margin-bottom: 10px;
+        font-size: 30px;
+    }
+
     h2 {
         font-size: 1.2em;
         padding: 10px;
@@ -48,22 +50,17 @@ section {
     p {
         padding: 10px;
     }
-}
 
-section:hover {
-    box-shadow: 0 8px 16px 0 rgba(255, 255, 255, 0.2);
+    &:hover {
+        box-shadow: 0 8px 16px 0 rgba(255, 255, 255, 0.2);
+    }
 }
 
 .description {
     margin: 20px;
-    max-width: 300px;
+    width: 300px;
     margin: 20px auto;
     padding: 30px 0px 0px 30px;
-}
-
-h1 {
-    margin-bottom: 10px;
-    font-size: larger;
 }
 
 #inputs {
@@ -85,12 +82,12 @@ h1 {
     color: #333;
     opacity: 1;
     cursor: pointer;
-   
-    &:hover{
+
+    &:hover {
         background-color: rgb(238, 238, 238);
         border: 1px solid rgb(201, 201, 201);
-        box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
-        transition: all .2s;
+        box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+        transition: all 0.2s;
     }
 }
 
