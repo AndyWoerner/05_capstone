@@ -1,7 +1,8 @@
 // Database
 const projectData = {
+    checkGeo: false,
+    imageURL: "https://pixabay.com/get/53e1d14a4350b10ff3d89960c62d3e7d163cd7ec5757_640.jpg"
 };
-
 
 const checkAndHandle = async (event) => {
     event.preventDefault();
@@ -63,10 +64,18 @@ async function fetchWeatherbit(geoData) {
     const weatherbitID = "6186def2ac69443597dd95e7d6e0e5b2"
 
     // coordinates from geonames
-    let lat = geoData.lat
-    let lng = geoData.lng
-    if (typeof(lat) === "number"){
-        projectData.checkGeo = true //check if coordinates are found and a card can be rendered
+    let lat 
+    let lng 
+    try {
+        lat = geoData.lat
+        lng = geoData.lng
+        projectData.checkGeo = true
+        
+    } catch (Error) {
+        console.log("An error occured while fetching coordinates");
+        lat = 0
+        lng = 0
+        projectData.checkGeo = false
     }
 
     //countdown for forecast
@@ -186,7 +195,7 @@ function createCard(projectData) {
         const currentTemp = projectData.currentTemp
         const maxTemp = projectData.maxTemp
         const minTemp = projectData.minTemp
-        
+
         //create card
         if (countdown == 0) {
             document.getElementById("results").innerHTML = `<div class="card">
@@ -231,15 +240,15 @@ function createCard(projectData) {
             document.getElementById("results").style.display = "flex"
             document.getElementById("close").addEventListener("click", closeCard)
         }
-    } 
-else {
+    }
+    else {
         document.getElementById("results").innerHTML = `<div class="card">
-    <span id="close">X</span>
-    <img id="result_imageURL"
-      src="https://pixabay.com/get/57e6d4424c53a814f1dc8460da293277163fd7e25a5870_640.jpg"
-      alt="${location}">
-    <h2>Sorry, we couldn´t find your location!</h2>
-  </div>`
+<span id="close">X</span>
+<img id="result_imageURL"
+  src="https://pixabay.com/get/53e1d14a4350b10ff3d89960c62d3e7d163cd7ec5757_640.jpg"
+  alt="travel image">
+<p>Sorry, we couldn´t find your location. Please try another one!</p>
+</div>`
         document.getElementById("results").style.display = "flex"
         document.getElementById("close").addEventListener("click", closeCard)
     }
