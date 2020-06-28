@@ -70,7 +70,7 @@ async function fetchWeatherbit(geoData) {
     if (typeof(lat) === "number"){
         projectData.checkGeo = true //check if coordinates are found and a card can be rendered
     }
-    
+
     //countdown for forecast
     const forecastStart = new Date(document.getElementById("date").value)
     const d = new Date()
@@ -261,6 +261,7 @@ export {
     checkAndHandle,
     fetchGeoname,
     fetchWeatherbit,
-    createCard
+    createCard,
+    fetchPixabay
 }
 

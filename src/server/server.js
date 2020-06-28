@@ -1,8 +1,3 @@
-// to hide credentials
-const dotenv = require('dotenv')
-dotenv.config()
-
-
 // Require Express to run server and routes
 const path = require("path")
 const express = require("express")

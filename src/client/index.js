@@ -1,5 +1,5 @@
 // import scripts
-import { checkAndHandle, fetchGeoname, fetchWeatherbit, createCard } from "./js/app"
+import { checkAndHandle, fetchGeoname, fetchPixabay, fetchWeatherbit, createCard } from "./js/app"
 
 // import styles
 import "./styles/resets.scss"
@@ -16,7 +16,8 @@ export {
     checkAndHandle,
     fetchGeoname,
     fetchWeatherbit,
-    createCard
+    createCard,
+    fetchPixabay
 }
 
 // eventListener 
